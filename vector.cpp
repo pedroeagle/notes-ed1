@@ -33,7 +33,21 @@
 	nome.back();
 	retorna o último elemento
 
+	nome.at(n); retorna o valor da posição indicada entre parênteses
 
+	nome.begin(); se refere a primeira posição
+	nome.begin()+n; se refere a posição n;
+
+	nome.insert(posicao, n); insere o valor n na posição posicao
+	nome.erase(n); limpa a posição e relocalização dos outros elementos.
+
+	nome.clear() limpa todas as posições, o vetor fica literalmente vazio diferentemente da inicialização que deixa todas as posições iguais
+	a 0.
+	nome.empty() retorna 1 caso o vetor esteja vazio
+	nome.pop_back() retira o último elemento
+	nome1.swap(nome2) coloca os valores presentes em nome1 em nome2 e os presentes em nome2 em nome1 independente do tamanho.
+
+	o operador igual iguala posição a posição de cada vector
 
 */
 #include <vector>
@@ -62,7 +76,18 @@ int main(){
 	cout<<"Veja os inteiros que você digitou:"<<endl;
 	outputVector(inteiros1);
 	outputVector(inteiros2);
-
+	cout<<"Veja os inteiros que você digitou após a inserção:"<<endl;
+	inteiros1.swap(inteiros2);
+	inteiros2 = inteiros1;
+	outputVector(inteiros1);
+	outputVector(inteiros2);
+	inteiros1.clear();
+	inteiros2.clear();
+	cout<<inteiros1.size()<<endl;
+	cout<<inteiros2.size()<<endl;
 	inteiros2 == inteiros1?cout<<"iguais"<<endl:cout<<"diferentes"<<endl;
+	/*cout<<"Inteiro na posição do meio de cada vector:\n"
+	<<"inteiros 1:\n"<<inteiros1.at(inteiros1.size()/2)<<"\n"
+	<<"inteiros 2:\n"<<inteiros2.at(inteiros2.size()/2)<<endl;*/
 	return 0;
 }
