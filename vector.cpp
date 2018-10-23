@@ -65,8 +65,10 @@ void inputVector(vector<int> &vetor){
 	}
 }
 int main(){
-	vector< int > inteiros1(7);
-	vector< int > inteiros2(10);
+	vector< int > inteiros1;
+	vector< int > inteiros2;
+	cout<<inteiros1.capacity()<<endl;
+	cout<<inteiros2.capacity()<<endl;
 	cout<<"Veja os vetores na hora da inicialização:"<<endl;
 	outputVector(inteiros1);
 	outputVector(inteiros2);
@@ -81,10 +83,14 @@ int main(){
 	inteiros2 = inteiros1;
 	outputVector(inteiros1);
 	outputVector(inteiros2);
-	inteiros1.clear();
-	inteiros2.clear();
-	cout<<inteiros1.size()<<endl;
-	cout<<inteiros2.size()<<endl;
+	inteiros1.push_back(25);
+	inteiros1.push_back(25);
+	inteiros1.push_back(25);
+	inteiros1.push_back(25);
+	inteiros1.push_back(25);
+	outputVector(inteiros1);
+	cout<<inteiros1.capacity()<<endl;
+	cout<<inteiros2.capacity()<<endl;
 	inteiros2 == inteiros1?cout<<"iguais"<<endl:cout<<"diferentes"<<endl;
 	/*cout<<"Inteiro na posição do meio de cada vector:\n"
 	<<"inteiros 1:\n"<<inteiros1.at(inteiros1.size()/2)<<"\n"
