@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <iostream>
-using namespace std;
-long int words(const char *in) {
+int words(const char *in) {
 
 if (in == NULL) {
 return -1;
@@ -13,19 +11,25 @@ FILE *arq = fopen(in, "r");
 if (arq == NULL) {
 return -2;
 }
-long int espacos = 0;
-char aux;
-while (1){
+int palavras = 0;
+char aux = ' ', prev;
+int i = 0;
+while(1){
+	prev = aux;
 	aux = fgetc(arq);
-	if(aux == ' '){
-		espacos++;
+	if((aux == ' ' || aux == EOF) && prev != ' '){
+		palavras++;
 	}
-	else if(aux == EOF){
+	if(aux == EOF){
 		break;
 	}
 }
 
 fclose(arq);
 
-return espacos;
+return palavras;
+}
+int main(){
+	printf("%d\n", words("texto.txt"));
+	return 0;
 }
