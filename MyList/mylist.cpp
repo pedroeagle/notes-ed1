@@ -20,7 +20,7 @@ void MyList::addToHead(int info){
 	_size++;
 }
 void MyList::addToTail(int info){
-	if(tail){
+	if(tail!=0){
 		tail->next = new Node(info);	//crio um next para o atual tail
 		tail = tail->next;				//troco o tail para o next do antigo
 	}
@@ -77,14 +77,22 @@ void MyList::showAll(){
 	}
 }
 void MyList::insert(int i, int info){
+	//O que fazer se a posição solicitada for além da quantidade de posições que já tenho?
+	if(i == 0){
+		addToHead(info);
+		return;
+	}
+	else if(i == size()){
+		addToTail(info);
+		return;
+	}
 	auto temp = head;
 	while((i--)-1){
 		temp = temp->next;
 	}
-
 	Node *insertion = new Node(info);
-	head = temp == head? insertion : head;
-	tail = temp == tail? insertion : tail;
+	/*head = (temp == head)? insertion : head;
+	tail = (temp == tail)? insertion : tail;*/
 	insertion->next = temp->next;
 	temp->next = insertion;
 }
