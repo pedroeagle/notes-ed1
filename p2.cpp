@@ -32,7 +32,7 @@ i = s[n];
 
 if (p[m] == i && m < (p.size() - 1)) {
 m++;
-} else (s[m] == i && n < (s.size() - 1)) {
+} else(s[m] == i && n < (s.size() - 1)) {
 n++;
 }
 
@@ -46,4 +46,7 @@ break;
 
 return r;
 
+}
+int main(){
+	return 0;
 }
