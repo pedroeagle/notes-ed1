@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 bool MyList::isEmpty(){
-	return _size == 0;
+	return size == 0;
 }
 MyList::MyList(){
 	head = tail = 0;
@@ -17,7 +17,7 @@ MyList::MyList(int info){
 void MyList::addToHead(int info){
 	head = new Node(info, head);		//coloco o antigo head como next do novo head
 	tail = tail? tail:head;
-	_size++;
+	size++;
 }
 void MyList::addToTail(int info){
 	if(tail!=0){
@@ -28,7 +28,7 @@ void MyList::addToTail(int info){
 		tail = new Node(info);			//se o tail for nulo quer dizer que minha lista está vazia
 		head = tail;					//como a lista estava vazia tenho que criar um head igual ao tail (lista de 1 elemento)
 	}
-	_size++;
+	size++;
 }
 void MyList::killHead(){
 	if(!head){							//se o head é nulo a lista está vazia
@@ -36,14 +36,14 @@ void MyList::killHead(){
 	}
 	else if(head == tail){
 		head = tail = 0;
-		_size--;
+		size--;
 	}
 	else{
 		auto *temp = head->next;		//guardo o meu novo head para que eu possa apagar o antigo sem perder o novo
 		tail = (head->next)? tail:head; //se o novo head for nulo quer dizer que minha lista está vazia então meu tail deve ser igual ao head
 		delete head;
 		head = temp;
-		_size--;
+		size--;
 	}
 }
 void MyList::killTail(){
@@ -53,7 +53,7 @@ void MyList::killTail(){
 	else if(tail == head){
 		delete head;
 		tail = head = 0;
-		_size--;
+		size--;
 	}
 	else{
 		auto *temp = head;
@@ -63,11 +63,8 @@ void MyList::killTail(){
 		delete tail;
 		tail = temp;
 		tail->next = 0;
-		_size--;
+		size--;
 	}
-}
-int MyList::size(){
-	return _size;
 }
 void MyList::showAll(){
 	auto temp = head;
@@ -77,31 +74,52 @@ void MyList::showAll(){
 	}
 }
 void MyList::insert(int i, int info){
-	//O que fazer se a posição solicitada for além da quantidade de posições que já tenho?
 	if(i == 0){
 		addToHead(info);
 		return;
 	}
-	else if(i == size()){
+	else if(i == size){
 		addToTail(info);
 		return;
 	}
-	auto temp = head;
-	while((i--)-1){
-		temp = temp->next;
+	else if(i > size || i < 0){
+		cout<<"posição inválida. não é possível fazer inserção na posição "<<i<<endl;
 	}
-	Node *insertion = new Node(info);
-	/*head = (temp == head)? insertion : head;
-	tail = (temp == tail)? insertion : tail;*/
-	insertion->next = temp->next;
-	temp->next = insertion;
+	else{
+		auto temp = head;
+		while((i--)-1){
+			temp = temp->next;
+		}
+		Node *insertion = new Node(info);
+		insertion->next = temp->next;
+		temp->next = insertion;
+		size++;
+	}
 }
 void MyList::remove(int i){
-	auto temp = head;
-	while((i--)-1){
-		temp = temp->next;
+	if(head == 0){
+		cout<<"lista vazia. não é possível remover o elemento "<<i<<endl;
+		return;
 	}
-	temp->next = temp->next->next;
-	temp = temp->next;
-	_size--;
+	else if(i == 0){
+		killHead();
+		return;
+	}
+	else if(i == size){
+		killTail();
+		return;
+	}
+	else if(i > size || i < 0){
+		cout<<"posição inválida. não foi possível remover o elemento "<<i<<endl;
+		return;
+	}
+	else{
+		auto temp = head;
+		while((i--)-1){
+			temp = temp->next;
+		}
+		temp->next = temp->next->next;
+		temp = temp->next;
+		size--;
+	}
 }

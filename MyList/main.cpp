@@ -11,7 +11,7 @@ int main(){
 	teste->killTail();
 	teste->killHead();
 	teste->insert(1, 1000);
-	//teste->remove(0);
+	teste->insert(3, 123456789);
 	teste->showAll();
 	return 0;
 }
