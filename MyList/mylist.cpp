@@ -8,7 +8,9 @@ MyList::MyList(){
 	head = tail = 0;
 }
 MyList::~MyList(){
-
+	while(size){
+		killHead();
+	}
 }
 MyList::MyList(int info){
 	head = new Node(info);

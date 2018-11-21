@@ -13,5 +13,8 @@ int main(){
 	teste->insert(1, 1000);
 	teste->insert(3, 123456789);
 	teste->showAll();
+	cout<<"apagando tudo"<<endl;
+	teste->~MyList();
+	teste->showAll();
 	return 0;
 }
