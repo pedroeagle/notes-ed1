@@ -8,6 +8,7 @@ int main(){
 	l->addToTail(5000);
 	l->insert(2, 4000);
 	l->addToHead(1000);
+	l->~DoublyList();
 	l->showAll();
 	return 0;
 }

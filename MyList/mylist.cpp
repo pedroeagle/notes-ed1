@@ -37,6 +37,8 @@ void MyList::killHead(){
 		cout<<"lista vazia. não foi possível apagar o head."<<endl;
 	}
 	else if(head == tail){
+		delete head;
+		delete tail;
 		head = tail = 0;
 		size--;
 	}
@@ -53,6 +55,7 @@ void MyList::killTail(){
 		cout<<"lista vazia. não foi possível apagar o tail."<<endl;
 	}
 	else if(tail == head){
+		delete tail;
 		delete head;
 		tail = head = 0;
 		size--;

@@ -7,6 +7,11 @@ DoublyList::DoublyList(){
 DoublyList::DoublyList(int info){
 	addToHead(info);
 }
+DoublyList::~DoublyList(){
+	while(size){
+		killHead();
+	}
+}
 void DoublyList::addToTail(int info){
 	Node *newTail = new Node(info);
 	if(tail != 0){
@@ -14,7 +19,7 @@ void DoublyList::addToTail(int info){
 		newTail->previous = tail;
 		tail = newTail;
 	}
-	else{ //se for nulo minha lista é vazia
+	else{ //se for nulo minha lista está vazia
 		head = newTail;
 		tail = newTail;
 	}
@@ -91,6 +96,7 @@ void DoublyList::killTail(){
 	else if(tail == head){
 		delete tail;
 		delete head;
+		tail = head = 0;
 		size--;
 	}
 	else{
@@ -109,6 +115,7 @@ void DoublyList::killHead(){
 	else if(head == tail){
 		delete head;
 		delete tail;
+		head = tail = 0;
 		size--;
 	}
 	else{
@@ -118,5 +125,7 @@ void DoublyList::killHead(){
 		delete temp;
 		size--;
 	}
-
+}
+bool DoublyList::isEmpty(){
+	return head == tail;
 }

@@ -101,6 +101,7 @@ void CircularList::killTail(){
 	else if(tail == head){
 		delete tail;
 		delete head;
+		head = tail = 0;
 		size--;
 	}
 	else{
@@ -119,6 +120,7 @@ void CircularList::killHead(){
 	else if(head == tail){
 		delete head;
 		delete tail;
+		head = tail = 0;
 		size--;
 	}
 	else{

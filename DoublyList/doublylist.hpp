@@ -7,6 +7,7 @@ public:
 	Node *head, *tail;
 	DoublyList();
 	DoublyList(int info);
+	~DoublyList();
 	void addToTail(int info);
 	void addToHead(int info);
 	void showAll();
@@ -14,5 +15,6 @@ public:
 	void remove(int i);
 	void killTail();
 	void killHead();
+	bool isEmpty();
 };
 #endif
