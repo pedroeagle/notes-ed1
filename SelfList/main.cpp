@@ -10,6 +10,5 @@ int main(){
 	s->addToTail(123456789);
 	s->addToTail(98764321);
 	s->showAll();
-
 	return 0;
 }
